@@ -1,4 +1,14 @@
-public class Person implements Comparable<Person>{
+import java.io.Serializable;
+
+/**
+ * File: Person.java
+ * Class: CSCI 1302
+ * Author: Kevin Tran & Nguyen Pham
+ * Created on: November 17, 2023
+ * Last Modified: November 17, 2023
+ * Description: Persons class to identify turn a dat file into an object
+ */
+public class Person implements Comparable<Person>, Serializable {
     int age, zip;
     String name, address;
     double salary;
@@ -60,14 +70,14 @@ public class Person implements Comparable<Person>{
 
     @Override
     public String toString() {
-        return String.format("%s %d %s %d %,.2f%n", name, age, address, zip, salary);
+        return String.format("%d %s %s %d $%,.2f", age, name, address, zip, salary);
     }
 
     @Override
     public int compareTo(Person o) {
-        if (this.getSalary() > o.getSalary()) {
+        if (this.getSalary() < o.getSalary()) {
             return 1;
-        } else if (this.getSalary() < o.getSalary()) {
+        } else if (this.getSalary() > o.getSalary()) {
             return -1;
         } else {
             return 0;
